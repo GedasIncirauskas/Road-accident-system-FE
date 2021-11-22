@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
+import { Message } from '../../..';
 import * as S from '../Form.styles';
 
 const Register = () => {
   const [inputValue, setInputValue] = useState();
+  const [toggleError, setToggleError] = useState(false);
+  const [msg, setMsg] = useState();
 
   const getRegistration = (e) => {
     e.preventDefault();
 
-    if (inputValue.password === inputValue.repeatPassword) {
+    if ((inputValue.password === inputValue.repeatPassword && inputValue.email) || inputValue.password) {
       fetch(`${process.env.REACT_APP_BASE_URL}/register`, {
         method: 'POST',
         headers: {
@@ -21,14 +24,15 @@ const Register = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data.serverStatus !== 2) {
-            return alert('Invalid email or password');
+            setToggleError(!toggleError);
+            return setMsg('Invalid email or password');
           }
-
-          return alert('You succesfully registered');
+          return (window.location.href = '/login');
         })
         .catch((err) => alert(err));
     } else {
-      return alert('Please enter correct password');
+      setToggleError(!toggleError);
+      return setMsg('Please enter correct email and password');
     }
   };
 
@@ -47,8 +51,8 @@ const Register = () => {
           id="email"
           required
           onChange={(e) => setInputValue({ ...inputValue, email: e.target.value })}
+          onClick={() => setToggleError(false)}
         />
-
         <label htmlFor="psw">
           <b>Password</b>
         </label>
@@ -58,9 +62,9 @@ const Register = () => {
           name="psw"
           id="psw"
           onChange={(e) => setInputValue({ ...inputValue, password: e.target.value })}
+          onClick={() => setToggleError(false)}
           required
         />
-
         <label htmlFor="psw-repeat">
           <b>Repeat Password</b>
         </label>
@@ -70,8 +74,10 @@ const Register = () => {
           name="psw-repeat"
           id="psw-repeat"
           onChange={(e) => setInputValue({ ...inputValue, repeatPassword: e.target.value })}
+          onClick={() => setToggleError(false)}
           required
         />
+        {toggleError ? <Message color={'false'}>{msg}</Message> : ''}
         <S.ButtonWrapper>
           <S.ButtonStyle type="submit" onClick={(e) => getRegistration(e)}>
             Register

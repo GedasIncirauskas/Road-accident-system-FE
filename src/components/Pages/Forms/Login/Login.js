@@ -24,10 +24,12 @@ const LogIn = () => {
             return setMsg(data.err);
           }
           localStorage.setItem('token', `${data.token}`);
-          window.location.href = '/accident';
-          return alert(data.msg);
+          return (window.location.href = '/accident');
         })
-        .catch((err) => alert(err));
+        .catch((err) => {
+          setToggleError(!toggleError);
+          alert(err);
+        });
     } else {
       setToggleError(!toggleError);
       return setMsg('Please enter email and password');
