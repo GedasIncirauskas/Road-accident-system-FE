@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Message } from '../../..';
 import * as S from '../Form.styles';
 
@@ -6,6 +7,7 @@ const Register = () => {
   const [inputValue, setInputValue] = useState();
   const [toggleError, setToggleError] = useState(false);
   const [msg, setMsg] = useState();
+  const navigate = useNavigate();
 
   const getRegistration = (e) => {
     e.preventDefault();
@@ -27,7 +29,7 @@ const Register = () => {
             setToggleError(!toggleError);
             return setMsg('Invalid email or password');
           }
-          return (window.location.href = '/login');
+          return navigate('/login', { replace: true });
         })
         .catch((err) => alert(err));
     } else {
