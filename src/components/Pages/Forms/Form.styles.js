@@ -7,11 +7,17 @@ export const FormContainer = styled.div`
   border-radius: 2rem;
   margin: 4rem auto;
   width: 30%;
+
+  @media screen and (max-width: 500px) {
+    margin: 1rem auto;
+    padding: 0.5rem 1rem;
+    width: 80%;
+  }
 `;
 
 export const InputStyle = styled.input`
   width: 100%;
-  padding: 15px;
+  padding: 1rem;
   margin: 0.2rem 0 1.5rem 0;
   display: inline-block;
   border: none;
@@ -21,6 +27,10 @@ export const InputStyle = styled.input`
   &:focus {
     background-color: #ddd;
     outline: none;
+  }
+
+  @media screen and (max-width: 500px) {
+    padding: 0.5rem;
   }
 `;
 
@@ -44,6 +54,11 @@ export const ButtonStyle = styled.button`
 
   &:hover {
     opacity: 1;
+  }
+
+  @media screen and (max-width: 500px) {
+    padding: 0.4rem 0.6rem;
+    font-size: 1rem;
   }
 `;
 

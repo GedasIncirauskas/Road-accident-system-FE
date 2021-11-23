@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Message } from '../../../';
+import Api from '../../../../Api';
 import * as S from '../Form.styles';
 
 const LogIn = () => {
@@ -7,32 +8,24 @@ const LogIn = () => {
   const [toggleError, setToggleError] = useState(false);
   const [msg, setMsg] = useState();
 
-  const getLogin = (e) => {
+  const getLogin = async (e) => {
     e.preventDefault();
-    if (inputValue) {
-      fetch(`${process.env.REACT_APP_BASE_URL}/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(inputValue),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.err) {
-            setToggleError(!toggleError);
-            return setMsg(data.err);
-          }
-          localStorage.setItem('token', `${data.token}`);
-          return (window.location.href = '/accident');
-        })
-        .catch((err) => {
-          setToggleError(!toggleError);
-          alert(err);
-        });
-    } else {
+    if (!inputValue) {
       setToggleError(!toggleError);
       return setMsg('Please enter email and password');
+    }
+    try {
+      const response = await Api.getLogin(inputValue);
+      const data = await response.json();
+      if (response.status !== 200) {
+        setToggleError(!toggleError);
+        return setMsg(data.err);
+      }
+      localStorage.setItem('token', `${data.token}`);
+      return (window.location.href = '/accident');
+    } catch (err) {
+      setToggleError(!toggleError);
+      setMsg(err);
     }
   };
 
@@ -51,7 +44,6 @@ const LogIn = () => {
           id="email"
           onChange={(e) => setInputValue({ ...inputValue, email: e.target.value })}
           onClick={() => setToggleError(false)}
-          required
         />
         <label htmlFor="psw">
           <b>Password</b>
@@ -63,9 +55,8 @@ const LogIn = () => {
           id="psw"
           onChange={(e) => setInputValue({ ...inputValue, password: e.target.value })}
           onClick={() => setToggleError(false)}
-          required
         />
-        {toggleError ? <Message color={'false'}>{msg}</Message> : ''}
+        {toggleError ? <Message>{msg}</Message> : ''}
         <S.ButtonWrapper>
           <S.ButtonStyle type="submit" onClick={(e) => getLogin(e)}>
             Login

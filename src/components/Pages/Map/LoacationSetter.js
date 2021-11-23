@@ -1,10 +1,13 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { CooredinateContext } from '../../contexts/Coordinates';
 import { useMap } from 'react-leaflet';
 import L from 'leaflet';
 import icon from './Icon';
+import * as S from './LocationSetter.styles';
 
 const LoacationSetter = () => {
+  const [toggleError, setToggleError] = useState(false);
+  const [msg, setMsg] = useState();
   const map = useMap();
   const cooredinateContext = useContext(CooredinateContext);
 
@@ -33,14 +36,15 @@ const LoacationSetter = () => {
   };
 
   const error = (err) => {
-    alert(err);
+    setMsg(`${err.message}. We need to get your location if you want enter accident!`);
+    setToggleError(!toggleError);
   };
 
   useEffect(() => {
     getUserGeolocationDetails();
   }, []);
 
-  return <div></div>;
+  return <>{toggleError ? <S.ContainerStyle>{msg}</S.ContainerStyle> : ''} </>;
 };
 
 export default LoacationSetter;

@@ -10,7 +10,7 @@ const Register = () => {
   const getRegistration = (e) => {
     e.preventDefault();
 
-    if ((inputValue.password === inputValue.repeatPassword && inputValue.email) || inputValue.password) {
+    if (inputValue && inputValue.password === inputValue.repeatPassword) {
       fetch(`${process.env.REACT_APP_BASE_URL}/register`, {
         method: 'POST',
         headers: {
@@ -49,7 +49,6 @@ const Register = () => {
           placeholder="Enter Email"
           name="email"
           id="email"
-          required
           onChange={(e) => setInputValue({ ...inputValue, email: e.target.value })}
           onClick={() => setToggleError(false)}
         />
@@ -63,7 +62,6 @@ const Register = () => {
           id="psw"
           onChange={(e) => setInputValue({ ...inputValue, password: e.target.value })}
           onClick={() => setToggleError(false)}
-          required
         />
         <label htmlFor="psw-repeat">
           <b>Repeat Password</b>
@@ -75,9 +73,8 @@ const Register = () => {
           id="psw-repeat"
           onChange={(e) => setInputValue({ ...inputValue, repeatPassword: e.target.value })}
           onClick={() => setToggleError(false)}
-          required
         />
-        {toggleError ? <Message color={'false'}>{msg}</Message> : ''}
+        {toggleError ? <Message>{msg}</Message> : ''}
         <S.ButtonWrapper>
           <S.ButtonStyle type="submit" onClick={(e) => getRegistration(e)}>
             Register

@@ -1,46 +1,64 @@
 import React, { useState, useContext } from 'react';
 import { CooredinateContext } from '../../../contexts/Coordinates';
-import { Button } from '../../../';
+import { Button, Message } from '../../../';
+import Api from '../../../../Api';
 import * as S from './Accident.styles';
 
-const Accident = () => {
-  const [userInputs, setUserInputs] = useState();
+const Accident = ({ getData }) => {
+  const [userInputs, setUserInputs] = useState('');
   const [toggle, setToggle] = useState(false);
+  const [toggleError, setToggleError] = useState(false);
+  const [msg, setMsg] = useState();
+  const [fileUplodedPath, setFileUplodedPath] = useState();
+
   const cooredinateContext = useContext(CooredinateContext);
 
   const close = () => {
     setToggle(!toggle);
   };
 
-  const sendMessage = (e) => {
+  const sendMessage = async (e) => {
     e.preventDefault();
-    const lat = cooredinateContext.coordinates[0];
-    const lng = cooredinateContext.coordinates[1];
-    const postValues = {
-      user: userInputs.user,
-      description: userInputs.description,
-      // file: userInputs.file,
-      lat,
-      lng,
-    };
+    try {
+      if (cooredinateContext.coordinates === undefined) {
+        return alert('Please set marker!');
+      }
+      const lat = cooredinateContext.coordinates[0];
+      const lng = cooredinateContext.coordinates[1];
+      const postValues = {
+        user: userInputs.user,
+        description: userInputs.description,
+        file: fileUplodedPath,
+        lat,
+        lng,
+      };
+      const response = await Api.createAccident(postValues);
+      if (response.status === 200) {
+        setToggle(!toggle);
+        getData();
+      } else {
+        setMsg('Please fill a form');
+        setToggleError(!toggleError);
+      }
+    } catch (err) {
+      setToggleError(!toggleError);
+      return setMsg(err);
+    }
+  };
 
-    fetch(`${process.env.REACT_APP_BASE_URL}/v1/accident`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(postValues),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (!data) {
-          return alert('error');
-        }
-        window.location.href = '/accident';
-        return alert('Success');
-      })
-      .catch((err) => alert(err.message));
-    setToggle(!toggle);
+  const onFileUpload = async (e) => {
+    try {
+      const formData = new FormData();
+      formData.append('file', e.target.files[0]);
+      const response = await Api.uploadPhoto(formData);
+      const data = await response.json();
+      if (response.status === 200) {
+        setFileUplodedPath(data.path);
+      }
+    } catch (err) {
+      setToggleError(!toggleError);
+      return setMsg(err);
+    }
   };
 
   return (
@@ -52,7 +70,7 @@ const Accident = () => {
             type="text"
             id="user"
             onChange={(e) => setUserInputs({ ...userInputs, user: e.target.value })}
-            required
+            onClick={() => setToggleError(false)}
           />
           <S.LabelStyles htmlFor="description">Description</S.LabelStyles>
           <S.TextareaStyles
@@ -61,20 +79,17 @@ const Accident = () => {
             row="6"
             id="description"
             onChange={(e) => setUserInputs({ ...userInputs, description: e.target.value })}
-            required
+            onClick={() => setToggleError(false)}
           ></S.TextareaStyles>
           <S.FileInputLabel htmlFor="test" id="S.LabelStylesis">
             <S.FileWrapperStyles>Add accident photo</S.FileWrapperStyles>
-            <S.FileInputStyles
-              type="file"
-              id="file"
-              onChange={(e) => setUserInputs({ ...userInputs, file: e.target.files[0] })}
-            />
+            <S.FileInputStyles type="file" id="file" onChange={(e) => onFileUpload(e)} />
           </S.FileInputLabel>
           <S.AddBtn type="submit" onClick={(e) => sendMessage(e)}>
             Add
           </S.AddBtn>
           <S.CloseBtn onClick={() => close()}>Close</S.CloseBtn>
+          {toggleError ? <Message>{msg}</Message> : ''}
         </S.FormContainer>
       ) : (
         <Button clicked={close}>Add accident</Button>
