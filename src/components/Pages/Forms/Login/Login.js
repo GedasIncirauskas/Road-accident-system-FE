@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Message } from '../../../';
 import Api from '../../../../Api';
 import * as S from '../Form.styles';
@@ -7,6 +8,7 @@ const LogIn = () => {
   const [inputValue, setInputValue] = useState();
   const [toggleError, setToggleError] = useState(false);
   const [msg, setMsg] = useState();
+  const navigate = useNavigate();
 
   const getLogin = async (e) => {
     e.preventDefault();
@@ -22,7 +24,7 @@ const LogIn = () => {
         return setMsg(data.err);
       }
       localStorage.setItem('token', `${data.token}`);
-      return (window.location.href = '/accident');
+      return navigate('/accident');
     } catch (err) {
       setToggleError(!toggleError);
       setMsg(err);

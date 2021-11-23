@@ -1,5 +1,5 @@
 export { default as Header } from './Header/Header';
-export { default as Maps } from './Pages/Map/Maps';
+export { default as Maps } from './Pages/Map/Maps/Maps';
 export { default as Home } from './Pages/Home/Home';
 export { default as Login } from './Pages/Forms/Login/Login';
 export { default as Register } from './Pages/Forms/Register/Register';

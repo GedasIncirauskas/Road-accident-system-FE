@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { MapContainer, Marker, Popup } from 'react-leaflet';
-import { Spinner, Accident } from '../../';
-import Api from '../../../Api';
-import TileLayer from './TileLayer';
-import LoacationSetter from './LoacationSetter';
-import icon from './Icon';
+import { Spinner, Accident } from '../../../';
+import Api from '../../../../Api';
+import TileLayer from '../TileLayer';
+import LoacationSetter from '../LocationSetter/LoacationSetter';
+import icon from '../Icon';
 import moment from 'moment';
 import * as S from './Maps.styles.js';
 

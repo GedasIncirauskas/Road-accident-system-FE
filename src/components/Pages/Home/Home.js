@@ -1,6 +1,6 @@
-import React from "react";
-import { Spinner } from "../../";
-import * as S from "./Home.styles";
+import React from 'react';
+import { Spinner } from '../../';
+import * as S from './Home.styles';
 
 const Home = () => {
   return (
