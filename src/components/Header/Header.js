@@ -14,7 +14,7 @@ const Header = () => {
     <S.HeaderWrapper>
       <S.Header>
         <Link to="/" id="logo">
-          Accident System
+          Road Accident System
         </Link>
         <S.HeaderRight>
           {token !== null ? (
