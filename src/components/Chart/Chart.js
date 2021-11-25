@@ -22,21 +22,24 @@ const AccidentChart = () => {
   return (
     <div>
       <h1>Drive safe please</h1>
-      <Chart
-        width={'100%'}
-        height={'1100px'}
-        chartType="BarChart"
-        loader={<Spinner />}
-        data={value}
-        options={{
-          title: 'Number of road deaths in EU countries (deaths per million population)',
-          chartArea: { width: '40%', height: '90%' },
-          colors: ['#b0120a', '#ffab91', '#eee'],
-          hAxis: {
-            minValue: 0,
-          },
-        }}
-      />
+      {!data && <Spinner />}
+      {data && (
+        <Chart
+          width={'100%'}
+          height={'1100px'}
+          chartType="BarChart"
+          loader={<Spinner />}
+          data={value}
+          options={{
+            title: 'Number of road deaths in EU countries (deaths per million population)',
+            chartArea: { width: '40%', height: '90%' },
+            colors: ['#b0120a', '#ffab91', '#eee'],
+            hAxis: {
+              minValue: 0,
+            },
+          }}
+        />
+      )}
     </div>
   );
 };
