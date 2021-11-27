@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Message } from '../../../';
-import Api from '../../../../Api';
+import { Message, Api } from '../../../';
+import { AuthContext } from '../../../contexts/auth';
 import * as S from '../Form.styles';
 
 const LogIn = () => {
   const [inputValue, setInputValue] = useState();
   const [toggleError, setToggleError] = useState(false);
   const [msg, setMsg] = useState();
+  const authContext = useContext(AuthContext);
   const navigate = useNavigate();
 
   const getLogin = async (e) => {
@@ -23,8 +24,8 @@ const LogIn = () => {
         setToggleError(!toggleError);
         return setMsg(data.err);
       }
-      localStorage.setItem('token', `${data.token}`);
-      return navigate('/accident');
+      authContext.setToken(data.token);
+      return navigate('/');
     } catch (err) {
       setToggleError(!toggleError);
       setMsg(err);

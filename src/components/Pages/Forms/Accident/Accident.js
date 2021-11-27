@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { CooredinateContext } from '../../../contexts/Coordinates';
-import { Button, Message } from '../../../';
-import Api from '../../../../Api';
+import { Button, Message, Api } from '../../../';
 import * as S from './Accident.styles';
 
 const Accident = ({ getData }) => {
@@ -10,7 +9,6 @@ const Accident = ({ getData }) => {
   const [toggleError, setToggleError] = useState(false);
   const [msg, setMsg] = useState();
   const [fileUplodedPath, setFileUplodedPath] = useState();
-
   const cooredinateContext = useContext(CooredinateContext);
 
   const close = () => {

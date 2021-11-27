@@ -1,23 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../contexts/auth';
 import * as S from './Header.styles.js';
 
 const Header = () => {
-  const token = localStorage.getItem('token');
+  const authContext = useContext(AuthContext);
+  const token = authContext.token;
 
   const logOut = () => {
-    localStorage.removeItem('token');
-    window.location.href = '/login';
+    authContext.setToken('');
+    Header();
   };
 
   return (
     <S.HeaderWrapper>
+      {console.log('ka grazina', authContext)}
       <S.Header>
         <Link to="/" id="logo">
           Road Accident System
         </Link>
         <S.HeaderRight>
-          {token !== null ? (
+          {token !== undefined ? (
             <Link to="/login" onClick={() => logOut()}>
               Log out
             </Link>

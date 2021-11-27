@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { MapContainer, Marker, Popup } from 'react-leaflet';
-import { Spinner, Accident } from '../../../';
-import Api from '../../../../Api';
+import { Spinner, Accident, Api } from '../../../';
+import { AuthContext } from '../../../contexts/auth';
 import TileLayer from '../TileLayer';
 import LoacationSetter from '../LocationSetter/LoacationSetter';
 import icon from '../Icon';
@@ -10,7 +10,8 @@ import * as S from './Maps.styles.js';
 
 const Maps = () => {
   const [newData, setnewData] = useState([]);
-  const token = localStorage.getItem('token');
+  const authContext = useContext(AuthContext);
+  const token = authContext.token;
   const position = [55.401, 24.03];
 
   const getDataToMap = async () => {
@@ -31,7 +32,12 @@ const Maps = () => {
       return alert('Please try again');
     }
     try {
-      await Api.deleteAccident(id);
+      await fetch(`${process.env.REACT_APP_BASE_URL}/v1/accident/${id}`, {
+        method: 'DELETE',
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
       getDataToMap();
     } catch (err) {
       alert(err);
@@ -60,9 +66,14 @@ const Maps = () => {
                 <S.ParagraphStyle>Information: {item.description}</S.ParagraphStyle>
                 {token ? (
                   <S.ImageContainer>
-                    <S.ImageStyle src={`${process.env.REACT_APP_BASE_URL}${item.file}`} alt={item.user} />
+                    <S.ImageStyle
+                      src={`${process.env.REACT_APP_BASE_URL}${item.file}`}
+                      alt={item.user}
+                    />
                     <p>Enter date: {moment(item.time).format('DD/MM/YYYY, h:mm a')}</p>
-                    <S.DeleteBtnStyle onClick={() => deleteAccidentById(item.id_accident)}>Delete</S.DeleteBtnStyle>
+                    <S.DeleteBtnStyle onClick={() => deleteAccidentById(item.id_accident)}>
+                      Delete
+                    </S.DeleteBtnStyle>
                   </S.ImageContainer>
                 ) : (
                   ''

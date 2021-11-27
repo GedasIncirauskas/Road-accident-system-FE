@@ -7,7 +7,9 @@ const AccidentChart = () => {
   const [value, setValues] = useState();
 
   const getCountriesData = () => {
-    let chartData = [['Country', 'Accident on road 2010', 'Accident on road 2019', 'Accident on road 2020']];
+    let chartData = [
+      ['Country', 'Accident on road 2010', 'Accident on road 2019', 'Accident on road 2020'],
+    ];
     for (let i = 0; i < data.length; i++) {
       const arr = [data[i].country, data[i].year_2010, data[i].year_2019, data[i].year_2020];
       chartData.push(arr);
