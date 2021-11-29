@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const HeaderWrapper = styled.div`
-  background-color: #f1f1f1;
+  background-color: rgb(241, 241, 241);
   width: 100%;
   height: 5rem;
 
@@ -42,16 +42,16 @@ export const Header = styled.div`
       font-weight: bolder;
 
       @media screen and (max-width: 500px) {
-        margin: 0;
-        width: 50%;
-        padding: 0.2rem 0.4rem;
+        margin: 0 auto;
+        background-color: rgb(241, 241, 241);
+        color: rgb(0, 0, 0);
       }
     }
 
     @media screen and (max-width: 500px) {
       margin: 0;
       width: 100%;
-      padding: 0.2rem 0;
+      padding: 0.2rem 0.4rem;
     }
   }
 
@@ -64,11 +64,27 @@ export const Header = styled.div`
   }
 `;
 
+export const Wrapper = styled.div`
+  & span {
+    display: none;
+  }
+
+  @media screen and (max-width: 500px) {
+    display: flex;
+    & span {
+      display: block;
+      line-height: 2rem;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+  }
+`;
+
 export const HeaderRight = styled.div`
   float: right;
 
   @media screen and (max-width: 500px) {
     float: none;
-    display: none;
+    display: ${(props) => (props.show ? 'none' : 'block')};
   }
 `;

@@ -5,7 +5,7 @@ export const FormContainer = styled.div`
   background-color: #fff;
   border: 0.2rem solid grey;
   border-radius: 2rem;
-  margin: 4rem auto;
+  margin: 1rem auto;
   width: 30%;
 
   @media screen and (max-width: 500px) {

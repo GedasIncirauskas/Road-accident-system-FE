@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Header, Maps, Home, Register, Login } from './components';
+import { Header, Maps, Home, Register, Login, Statistic } from './components';
 import AuthProvider from './components/contexts/auth';
 import * as S from './App.styles.js';
 
@@ -12,6 +12,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/statistic" element={<Statistic />} />
           <Route path="/login" element={<Login />} />
           <Route
             path="/accident"

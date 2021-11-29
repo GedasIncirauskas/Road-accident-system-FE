@@ -1,11 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../contexts/auth';
 import * as S from './Header.styles.js';
 
 const Header = () => {
+  const [open, setOpen] = useState(true);
   const authContext = useContext(AuthContext);
   const token = authContext.token;
+
+  const openBar = () => {
+    setOpen(!open);
+  };
 
   const logOut = () => {
     authContext.setToken('');
@@ -14,16 +19,21 @@ const Header = () => {
 
   return (
     <S.HeaderWrapper>
-      {console.log('ka grazina', authContext)}
       <S.Header>
-        <Link to="/" id="logo">
-          Road Accident System
-        </Link>
-        <S.HeaderRight>
+        <S.Wrapper>
+          <Link to="/" id="logo">
+            Road Accident System
+          </Link>
+          <span onClick={() => openBar(open)}>{open ? '+' : '-'}</span>
+        </S.Wrapper>
+        <S.HeaderRight show={open}>
           {token !== undefined ? (
-            <Link to="/login" onClick={() => logOut()}>
-              Log out
-            </Link>
+            <>
+              <Link to="/statistic">Statistic</Link>
+              <Link to="/login" onClick={() => logOut()}>
+                Log out
+              </Link>
+            </>
           ) : (
             <>
               <Link to="/register">Register</Link>

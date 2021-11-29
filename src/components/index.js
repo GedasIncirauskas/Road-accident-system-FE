@@ -4,6 +4,7 @@ export { default as Home } from './Pages/Home/Home';
 export { default as Login } from './Pages/Forms/Login/Login';
 export { default as Register } from './Pages/Forms/Register/Register';
 export { default as Accident } from './Pages/Forms/Accident/Accident';
+export { default as Statistic } from './Pages/Statistic/Statistic';
 export { default as Spinner } from './Spinner/Spinner';
 export { default as Message } from './Message/Message';
 export { default as Button } from './Button/Button';

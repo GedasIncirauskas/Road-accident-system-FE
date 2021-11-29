@@ -10,6 +10,7 @@ import * as S from './Maps.styles.js';
 
 const Maps = () => {
   const [newData, setnewData] = useState([]);
+  const [serverErr, setServerErr] = useState(false);
   const authContext = useContext(AuthContext);
   const token = authContext.token;
   const position = [55.401, 24.03];
@@ -23,7 +24,7 @@ const Maps = () => {
       }
       return setnewData(data);
     } catch (err) {
-      alert(err);
+      return setServerErr(!serverErr);
     }
   };
 
@@ -48,8 +49,7 @@ const Maps = () => {
 
   return (
     <S.ContainerStyle>
-      {newData.length === 0 && <Spinner />}
-      {newData.length > 0 && (
+      {!serverErr ? (
         <MapContainer
           center={position}
           zoom={5}
@@ -83,6 +83,8 @@ const Maps = () => {
           ))}
           <Accident getData={getDataToMap} />
         </MapContainer>
+      ) : (
+        <Spinner />
       )}
     </S.ContainerStyle>
   );

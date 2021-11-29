@@ -29,6 +29,14 @@ const API = {
   getAccident() {
     return fetch(`${process.env.REACT_APP_BASE_URL}/v1/accident`);
   },
+
+  getStatistic(token) {
+    return fetch(`${process.env.REACT_APP_BASE_URL}/v1/statistic`, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    });
+  },
 };
 
 export default API;

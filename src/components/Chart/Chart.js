@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { data } from '../../data';
+import { data } from '../../assets/data';
 import { Spinner } from '..';
 import { Chart } from 'react-google-charts';
+import * as S from './Chart.styles';
 
 const AccidentChart = () => {
   const [value, setValues] = useState();
 
   const getCountriesData = () => {
-    let chartData = [
-      ['Country', 'Accident on road 2010', 'Accident on road 2019', 'Accident on road 2020'],
-    ];
+    let chartData = [['Country', '2010 year', '2019 year', '2020 year']];
     for (let i = 0; i < data.length; i++) {
       const arr = [data[i].country, data[i].year_2010, data[i].year_2019, data[i].year_2020];
       chartData.push(arr);
@@ -22,27 +21,27 @@ const AccidentChart = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Drive safe please</h1>
+    <S.ChartContainer>
+      <h2>Number of road deaths in EU countries (deaths per million population).</h2>
       {!data && <Spinner />}
       {data && (
         <Chart
-          width={'100%'}
-          height={'1100px'}
+          height={'100vh'}
           chartType="BarChart"
           loader={<Spinner />}
           data={value}
           options={{
-            title: 'Number of road deaths in EU countries (deaths per million population)',
-            chartArea: { width: '40%', height: '90%' },
-            colors: ['#b0120a', '#ffab91', '#eee'],
+            chartArea: { width: '55%', height: '100%' },
+            colors: ['#000000', '#1aff66', '#00b38f'],
             hAxis: {
               minValue: 0,
             },
+            legend: 'none',
+            bar: { groupWidth: '80%' },
           }}
         />
       )}
-    </div>
+    </S.ChartContainer>
   );
 };
 
