@@ -33,12 +33,7 @@ const Maps = () => {
       return alert('Please try again');
     }
     try {
-      await fetch(`${process.env.REACT_APP_BASE_URL}/v1/accident/${id}`, {
-        method: 'DELETE',
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      });
+      await Api.deleteById(id, token);
       getDataToMap();
     } catch (err) {
       alert(err);

@@ -5,13 +5,13 @@ export const FormContainer = styled.div`
   background-color: #fff;
   border: 0.2rem solid grey;
   border-radius: 2rem;
-  margin: 1rem auto;
+  margin: 5rem auto;
   width: 30%;
 
   @media screen and (max-width: 500px) {
-    margin: 1rem auto;
+    margin: 2rem auto;
     padding: 0.5rem 1rem;
-    width: 80%;
+    width: 70%;
   }
 `;
 

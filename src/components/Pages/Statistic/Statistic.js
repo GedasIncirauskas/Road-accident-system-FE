@@ -1,19 +1,24 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Api } from '../..';
+import { Api, Selector, Table, Spinner } from '../..';
 import { AuthContext } from '../../contexts/auth';
+import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
-import * as S from './Statistic.styles';
 
 const Statistic = () => {
   const [newData, setnewData] = useState([]);
-  const [date, setDate] = useState([]);
+  const [date, setDate] = useState();
+  const [selector, setSelector] = useState(false);
   const authContext = useContext(AuthContext);
   const token = authContext.token;
+  const navigate = useNavigate();
 
   const getDataFromServer = async () => {
     try {
       const response = await Api.getStatistic(token);
       const data = await response.json();
+      if (data.err) {
+        return navigate('/login');
+      }
       getUniqDate(data);
       return setnewData(data);
     } catch (err) {
@@ -23,13 +28,13 @@ const Statistic = () => {
 
   const getUniqDate = (data) => {
     const dateArray = data.map((item) => moment(item.time).format('YYYY/MM/DD'));
-    let uniqDateArray = [];
-    dateArray.map((item) => {
-      if (uniqDateArray.indexOf(item) === -1) {
-        uniqDateArray.push(item);
-      }
-    });
-    setDate(uniqDateArray);
+    setDate([...new Set(dateArray)]);
+  };
+
+  const filterData = () => {
+    return newData.filter(
+      (item) => moment(item.time).format('YYYY/MM/DD') === selector || !selector,
+    );
   };
 
   useEffect(() => {
@@ -38,34 +43,14 @@ const Statistic = () => {
 
   return (
     <div>
-      <S.FilterContainer>
-        <label htmlFor="date">Filter by date:</label>
-        <select name="date">
-          {date.map((item) => (
-            <option key={item} value={item}>
-              {item}
-            </option>
-          ))}
-        </select>
-      </S.FilterContainer>
-      <S.TableContainer>
-        <thead>
-          <tr>
-            <th>Driver</th>
-            <th>Information</th>
-            <th>Date of accident</th>
-          </tr>
-        </thead>
-        <tbody>
-          {newData.map((item) => (
-            <tr key={item.id_accident}>
-              <td>{item.user}</td>
-              <td>{item.description}</td>
-              <td>{moment(item.time).format('YYYY/MM/DD')}</td>
-            </tr>
-          ))}
-        </tbody>
-      </S.TableContainer>
+      {newData.length !== 0 ? (
+        <>
+          <Selector date={date} selector={selector} setSelector={setSelector} />
+          <Table filterData={filterData} />
+        </>
+      ) : (
+        <Spinner />
+      )}
     </div>
   );
 };

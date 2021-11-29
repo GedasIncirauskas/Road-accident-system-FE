@@ -37,6 +37,15 @@ const API = {
       },
     });
   },
+
+  deleteById(id, token) {
+    return fetch(`${process.env.REACT_APP_BASE_URL}/v1/accident/${id}`, {
+      method: 'DELETE',
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    });
+  },
 };
 
 export default API;
