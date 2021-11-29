@@ -8,4 +8,6 @@ export { default as Statistic } from './Pages/Statistic/Statistic';
 export { default as Spinner } from './Spinner/Spinner';
 export { default as Message } from './Message/Message';
 export { default as Button } from './Button/Button';
+export { default as Selector } from './Selector/Selector';
+export { default as Table } from './Table/Table';
 export { default as Api } from '../Api';
