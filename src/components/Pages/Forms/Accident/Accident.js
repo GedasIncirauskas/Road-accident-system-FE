@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { CooredinateContext } from '../../../contexts/Coordinates';
+import { CooredinateContext } from '../../../../contexts/Coordinates';
 import { Button, Message, Api } from '../../../';
 import * as S from './Accident.styles';
 

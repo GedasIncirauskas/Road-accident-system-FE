@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Message, Api } from '../../../';
-import { AuthContext } from '../../../contexts/auth';
+import { AuthContext } from '../../../../contexts/auth';
 import * as S from '../Form.styles';
 
 const LogIn = () => {

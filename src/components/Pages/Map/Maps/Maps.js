@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { MapContainer, Marker, Popup } from 'react-leaflet';
 import { Spinner, Accident, Api } from '../../../';
-import { AuthContext } from '../../../contexts/auth';
+import { AuthContext } from '../../../../contexts/auth';
 import TileLayer from '../TileLayer';
 import LoacationSetter from '../LocationSetter/LoacationSetter';
 import icon from '../Icon';

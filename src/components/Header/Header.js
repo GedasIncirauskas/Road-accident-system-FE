@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../contexts/auth';
+import { AuthContext } from '../../contexts/auth';
 import * as S from './Header.styles.js';
 
 const Header = () => {

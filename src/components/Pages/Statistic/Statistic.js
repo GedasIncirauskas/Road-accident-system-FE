@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Api, Selector, Table, Spinner } from '../..';
-import { AuthContext } from '../../contexts/auth';
+import { AuthContext } from '../../../contexts/auth';
 import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { CooredinateContext } from '../../../contexts/Coordinates';
+import { CooredinateContext } from '../../../../contexts/Coordinates';
 import { useMap } from 'react-leaflet';
 import L from 'leaflet';
 import icon from '../Icon';

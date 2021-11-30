@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import CoordinateProvider from './components/contexts/Coordinates';
+import CoordinateProvider from './contexts/Coordinates';
 import 'normalize.css';
 
 ReactDOM.render(
