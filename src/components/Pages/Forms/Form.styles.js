@@ -5,13 +5,17 @@ export const FormContainer = styled.div`
   background-color: #fff;
   border: 0.2rem solid grey;
   border-radius: 2rem;
-  margin: 5rem auto;
+  margin: 2rem auto 4rem auto;
   width: 30%;
 
   @media screen and (max-width: 500px) {
-    margin: 2rem auto;
+    margin: 1rem auto 4rem auto;
     padding: 0.5rem 1rem;
     width: 70%;
+
+    & h2 {
+      margin: 0.5rem auto 0 auto;
+    }
   }
 `;
 
@@ -31,6 +35,7 @@ export const InputStyle = styled.input`
 
   @media screen and (max-width: 500px) {
     padding: 0.5rem;
+    margin: 0 0 1rem 0;
   }
 `;
 
@@ -59,6 +64,7 @@ export const ButtonStyle = styled.button`
   @media screen and (max-width: 500px) {
     padding: 0.4rem 0.6rem;
     font-size: 1rem;
+    width: 100%;
   }
 `;
 
@@ -66,7 +72,16 @@ export const SignIn = styled.div`
   text-align: center;
   margin-top: 1rem;
 
+  @media screen and (max-width: 500px) {
+    font-size: 0.75rem;
+  }
+
   a {
     color: dodgerblue;
+    padding: 0.5rem 0;
+
+    @media screen and (max-width: 500px) {
+      font-size: 0.75rem;
+    }
   }
 `;

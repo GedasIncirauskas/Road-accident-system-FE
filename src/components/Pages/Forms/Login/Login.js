@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Message, Api } from '../../../';
 import { AuthContext } from '../../../../contexts/auth';
 import * as S from '../Form.styles';
@@ -43,8 +43,6 @@ const LogIn = () => {
         <S.InputStyle
           type="text"
           placeholder="Enter Email"
-          name="email"
-          id="email"
           onChange={(e) => setInputValue({ ...inputValue, email: e.target.value })}
           onClick={() => setToggleError(false)}
         />
@@ -54,8 +52,6 @@ const LogIn = () => {
         <S.InputStyle
           type="password"
           placeholder="Enter Password"
-          name="psw"
-          id="psw"
           onChange={(e) => setInputValue({ ...inputValue, password: e.target.value })}
           onClick={() => setToggleError(false)}
         />
@@ -66,7 +62,7 @@ const LogIn = () => {
           </S.ButtonStyle>
         </S.ButtonWrapper>
         <S.SignIn>
-          Don't have an account? <a href="/register">Create account</a>.
+          Don't have an account? <Link to="/register">Create account</Link>.
         </S.SignIn>
       </S.FormContainer>
     </form>

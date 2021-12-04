@@ -26,15 +26,17 @@ const Statistic = () => {
     }
   };
 
+  const momentFn = (time) => {
+    return moment(time).format('YYYY/MM/DD');
+  };
+
   const getUniqDate = (data) => {
-    const dateArray = data.map((item) => moment(item.time).format('YYYY/MM/DD'));
+    const dateArray = data.map((item) => momentFn(item.time));
     setDate([...new Set(dateArray)]);
   };
 
   const filterData = () => {
-    return newData.filter(
-      (item) => moment(item.time).format('YYYY/MM/DD') === selector || !selector,
-    );
+    return newData.filter((item) => momentFn(item.time) === selector || !selector);
   };
 
   useEffect(() => {

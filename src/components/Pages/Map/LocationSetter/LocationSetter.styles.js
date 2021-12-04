@@ -17,4 +17,12 @@ export const ContainerStyle = styled.div`
   line-height: 1.5rem;
   text-align: center;
   opacity: 0.7;
+
+  @media screen and (max-width: 500px) {
+    width: 80%;
+    left: 5%;
+    right: 5%;
+    top: 15%;
+    font-size: 0.8rem;
+  }
 `;

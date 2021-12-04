@@ -79,7 +79,7 @@ const Accident = ({ getData }) => {
             onChange={(e) => setUserInputs({ ...userInputs, description: e.target.value })}
             onClick={() => setToggleError(false)}
           ></S.TextareaStyles>
-          <S.FileInputLabel htmlFor="test" id="S.LabelStylesis">
+          <S.FileInputLabel htmlFor="file" id="S.LabelStylesis">
             <S.FileWrapperStyles>Add accident photo</S.FileWrapperStyles>
             <S.FileInputStyles type="file" id="file" onChange={(e) => onFileUpload(e)} />
           </S.FileInputLabel>

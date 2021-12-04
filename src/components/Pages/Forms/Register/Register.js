@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Message } from '../../..';
 import * as S from '../Form.styles';
 
@@ -49,8 +49,6 @@ const Register = () => {
         <S.InputStyle
           type="text"
           placeholder="Enter Email"
-          name="email"
-          id="email"
           onChange={(e) => setInputValue({ ...inputValue, email: e.target.value })}
           onClick={() => setToggleError(false)}
         />
@@ -60,8 +58,6 @@ const Register = () => {
         <S.InputStyle
           type="password"
           placeholder="Enter Password"
-          name="psw"
-          id="psw"
           onChange={(e) => setInputValue({ ...inputValue, password: e.target.value })}
           onClick={() => setToggleError(false)}
         />
@@ -71,8 +67,6 @@ const Register = () => {
         <S.InputStyle
           type="password"
           placeholder="Repeat Password"
-          name="psw-repeat"
-          id="psw-repeat"
           onChange={(e) => setInputValue({ ...inputValue, repeatPassword: e.target.value })}
           onClick={() => setToggleError(false)}
         />
@@ -83,7 +77,7 @@ const Register = () => {
           </S.ButtonStyle>
         </S.ButtonWrapper>
         <S.SignIn>
-          Already have an account? <a href="/login">Sign in</a>.
+          Already have an account? <Link to="/login">Sign in</Link>.
         </S.SignIn>
       </S.FormContainer>
     </form>

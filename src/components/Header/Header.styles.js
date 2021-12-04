@@ -18,6 +18,10 @@ export const Header = styled.div`
   & #logo {
     font-size: 1.5rem;
     font-weight: bold;
+
+    @media screen and (max-width: 500px) {
+      font-size: 1.2rem;
+    }
   }
 
   a {
@@ -76,6 +80,7 @@ export const Wrapper = styled.div`
       line-height: 2rem;
       font-weight: bold;
       font-size: 1.5rem;
+      padding: 0 1rem;
     }
   }
 `;

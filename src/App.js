@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Header, Maps, Home, Register, Login, Statistic } from './components';
+import { Header, Maps, Home, Register, Login, Statistic, Footer } from './components';
 import AuthProvider from './contexts/auth';
 import * as S from './App.styles.js';
 
@@ -23,6 +23,7 @@ const App = () => {
             }
           />
         </Routes>
+        <Footer />
       </Router>
     </AuthProvider>
   );
