@@ -67,6 +67,7 @@ const Accident = ({ getData }) => {
           <S.InputStyles
             type="text"
             id="user"
+            autoComplete="off"
             onChange={(e) => setUserInputs({ ...userInputs, user: e.target.value })}
             onClick={() => setToggleError(false)}
           />
@@ -76,6 +77,7 @@ const Accident = ({ getData }) => {
             col="5"
             row="6"
             id="description"
+            autoComplete="off"
             onChange={(e) => setUserInputs({ ...userInputs, description: e.target.value })}
             onClick={() => setToggleError(false)}
           ></S.TextareaStyles>

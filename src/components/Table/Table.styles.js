@@ -29,5 +29,6 @@ export const TableContainer = styled.table`
   @media screen and (max-width: 500px) {
     font-size: 0.6rem;
     width: 90%;
+    margin: 0 auto 3rem auto;
   }
 `;

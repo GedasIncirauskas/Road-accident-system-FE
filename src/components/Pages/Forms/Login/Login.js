@@ -43,6 +43,7 @@ const LogIn = () => {
         <S.InputStyle
           type="text"
           placeholder="Enter Email"
+          autoComplete="off"
           onChange={(e) => setInputValue({ ...inputValue, email: e.target.value })}
           onClick={() => setToggleError(false)}
         />
@@ -52,6 +53,7 @@ const LogIn = () => {
         <S.InputStyle
           type="password"
           placeholder="Enter Password"
+          autoComplete="off"
           onChange={(e) => setInputValue({ ...inputValue, password: e.target.value })}
           onClick={() => setToggleError(false)}
         />

@@ -21,7 +21,7 @@ const Header = () => {
     <S.HeaderWrapper>
       <S.Header>
         <S.Wrapper>
-          <Link to="/" id="logo">
+          <Link to="/" id="logo" onClick={() => openBar(open)}>
             Road Accident System
           </Link>
           <span onClick={() => openBar(open)}>{open ? '+' : '-'}</span>
@@ -29,18 +29,25 @@ const Header = () => {
         <S.HeaderRight show={open}>
           {token !== undefined ? (
             <>
-              <Link to="/statistic">Statistic</Link>
+              <Link to="/statistic" onClick={() => openBar(open)}>
+                Statistic
+              </Link>
               <Link to="/login" onClick={() => logOut()}>
                 Log out
               </Link>
             </>
           ) : (
             <>
-              <Link to="/register">Register</Link>
-              <Link to="/login">Log In</Link>
+              <Link to="/register" onClick={() => openBar(open)}>
+                {' '}
+                Register
+              </Link>
+              <Link to="/login" onClick={() => openBar(open)}>
+                Log In
+              </Link>
             </>
           )}
-          <Link to="/accident" id="active">
+          <Link to="/accident" id="active" onClick={() => openBar(open)}>
             Enter accident
           </Link>
         </S.HeaderRight>

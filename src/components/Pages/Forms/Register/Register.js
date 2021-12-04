@@ -43,30 +43,33 @@ const Register = () => {
       <S.FormContainer>
         <h2>Register</h2>
         <p>Please fill in this form to create an account.</p>
-        <label htmlFor="email">
+        <label>
           <b>Email</b>
         </label>
         <S.InputStyle
           type="text"
           placeholder="Enter Email"
+          autoComplete="off"
           onChange={(e) => setInputValue({ ...inputValue, email: e.target.value })}
           onClick={() => setToggleError(false)}
         />
-        <label htmlFor="psw">
+        <label>
           <b>Password</b>
         </label>
         <S.InputStyle
           type="password"
           placeholder="Enter Password"
+          autoComplete="off"
           onChange={(e) => setInputValue({ ...inputValue, password: e.target.value })}
           onClick={() => setToggleError(false)}
         />
-        <label htmlFor="psw-repeat">
+        <label>
           <b>Repeat Password</b>
         </label>
         <S.InputStyle
           type="password"
           placeholder="Repeat Password"
+          autoComplete="off"
           onChange={(e) => setInputValue({ ...inputValue, repeatPassword: e.target.value })}
           onClick={() => setToggleError(false)}
         />
