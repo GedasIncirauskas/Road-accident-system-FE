@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ChartContainer = styled.div`
   margin: 0 auto;
-  width: 70%;
+  width: 75%;
 
   @media screen and (max-width: 500px) {
     width: 100%;
@@ -15,12 +15,14 @@ export const ChartContainer = styled.div`
       font-size: 1rem;
     }
   }
+`;
 
-  & text {
-    font-size: 0.8rem;
-
-    @media screen and (max-width: 500px) {
-      font-size: 0.6em;
+export const WrapperStyle = styled.div`
+  margin-bottom: 3rem;
+  @media screen and (max-width: 500px) {
+    padding: 0 0.5rem;
+    & tspan {
+      font-size: 0.75rem;
     }
   }
 `;
