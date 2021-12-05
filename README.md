@@ -38,7 +38,7 @@ You are done! Now you can start editing the React project in the new folder that
 
 ## Screenshots
 
-![Login form](./src/assets/accident1.png)
+![Login form](./src/screenshots/accident1.png)
 
 ##
 
