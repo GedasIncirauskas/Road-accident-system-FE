@@ -36,6 +36,12 @@ This installs the required dependencies.
 
 You are done! Now you can start editing the React project in the new folder that's created.
 
+## Screenshots
+
+![Login form](src/assets/accident1.png)
+
+##
+
 ## Contact
 
 Gedas Inčirauskas- [My portfolio](https://gjob.lt) - gedas.inc@gmail.com
