@@ -38,9 +38,11 @@ You are done! Now you can start editing the React project in the new folder that
 
 ## Screenshots
 
-<img src="./src/screenshots/accident1.png"  alt="Login form" width="200" height="300">
-<img src="./src/screenshots/accident2.png"  alt="Map information" width="200" height="300">
-<img src="./src/screenshots/accident3.png"  alt="Statistic table" width="200" height="300">
+<div style="display: flex">
+<img src="./src/screenshots/accident1.png"  alt="Login form" width="400" height="300">
+<img src="./src/screenshots/accident2.png"  alt="Map information" width="400" height="300">
+<img src="./src/screenshots/accident3.png"  alt="Statistic table" width="400" height="300">
+</div>
 
 ##
 
