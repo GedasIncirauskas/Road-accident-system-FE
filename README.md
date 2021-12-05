@@ -38,9 +38,9 @@ You are done! Now you can start editing the React project in the new folder that
 
 ## Screenshots
 
-![Login form](./src/screenshots/accident1.png =200x300)
-![Map information](./src/screenshots/accident2.png =200x300)
-![Statistic table](./src/screenshots/accident3.png =200x300)
+<img src="./src/screenshots/accident1.png"  alt="Login form" width="200" height="300">
+<img src="./src/screenshots/accident2.png"  alt="Map information" width="200" height="300">
+<img src="./src/screenshots/accident3.png"  alt="Statistic table" width="200" height="300">
 
 ##
 
