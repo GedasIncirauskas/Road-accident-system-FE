@@ -9,6 +9,9 @@ export const TableContainer = styled.table`
   th {
     border: 0.01rem solid rgb(241, 241, 241);
     padding: 0.5rem 1rem;
+    @media screen and (max-width: 500px) {
+      padding: 0.2rem 0.3rem;
+    }
   }
 
   & tr:nth-child(even) {
@@ -27,7 +30,7 @@ export const TableContainer = styled.table`
   }
 
   @media screen and (max-width: 500px) {
-    font-size: 0.6rem;
+    font-size: 0.5rem;
     width: 90%;
     margin: 0 auto 3rem auto;
   }

@@ -7,10 +7,18 @@ export const ContainerStyle = styled.div`
 
 export const ParagraphStyle = styled.p`
   margin: 0.5rem auto !important;
+
+  & span {
+    font-weight: bolder;
+  }
 `;
 
 export const ImageContainer = styled.div`
   text-align: center;
+
+  & span {
+    font-weight: bolder;
+  }
 `;
 
 export const ImageStyle = styled.img`

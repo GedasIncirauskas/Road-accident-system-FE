@@ -12,6 +12,7 @@ export const ModalBtn = styled.button`
   font-size: 1rem;
   border-radius: 0.5rem;
   line-height: 1.5rem;
+  font-family: 'Manrope', sans-serif;
 
   &::after {
     content: ' +';

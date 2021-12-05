@@ -27,7 +27,7 @@ export const InputStyle = styled.input`
   border: none;
   background: #f1f1f1;
   box-sizing: border-box;
-
+  line-height: 1.5rem;
   &:focus {
     background-color: #ddd;
     outline: none;

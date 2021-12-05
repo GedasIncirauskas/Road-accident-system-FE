@@ -4,6 +4,7 @@ export const FormContainer = styled.div`
   padding: 1.5rem 2rem;
   background-color: rgb(255, 255, 255);
   border: 0.2rem solid rgb(230, 230, 230);
+  font-family: 'Manrope', sans-serif;
   border-radius: 2rem;
   width: 15%;
   position: absolute;
@@ -61,6 +62,11 @@ export const FileWrapperStyles = styled.div`
   border: 0.2rem dotted rgb(190, 190, 190);
   border-radius: 0.2rem;
   box-sizing: border-box;
+  z-index: 999;
+
+  &:active {
+    border: 0.2rem solid rgb(250, 45, 45);
+  }
 `;
 
 export const FileInputLabel = styled.label`

@@ -50,22 +50,28 @@ const Maps = () => {
           zoom={5}
           scrollWheelZoom={true}
           icon={icon}
-          style={{ width: '100%', height: '90vh' }}
+          style={{ width: '100%', height: '90vh', fontFamily: 'Manrope, "sans-serif' }}
         >
           <LoacationSetter />
           <TileLayer />
           {newData.map((item) => (
             <Marker key={item.id_accident} position={[Number(item.lat), Number(item.lng)]}>
               <Popup maxWidth="200">
-                <S.ParagraphStyle>User: {item.user}</S.ParagraphStyle>
-                <S.ParagraphStyle>Information: {item.description}</S.ParagraphStyle>
+                <S.ParagraphStyle>
+                  <span>User:</span> {item.user}
+                </S.ParagraphStyle>
+                <S.ParagraphStyle>
+                  <span>Information:</span> {item.description}
+                </S.ParagraphStyle>
                 {token ? (
                   <S.ImageContainer>
                     <S.ImageStyle
                       src={`${process.env.REACT_APP_BASE_URL}${item.file}`}
                       alt={item.user}
                     />
-                    <p>Enter date: {moment(item.time).format('DD/MM/YYYY, h:mm a')}</p>
+                    <p>
+                      <span>Enter date:</span> {moment(item.time).format('DD/MM/YYYY, h:mm a')}
+                    </p>
                     <S.DeleteBtnStyle onClick={() => deleteAccidentById(item.id_accident)}>
                       Delete
                     </S.DeleteBtnStyle>

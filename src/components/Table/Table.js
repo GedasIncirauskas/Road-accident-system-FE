@@ -3,6 +3,10 @@ import moment from 'moment';
 import * as S from './Table.styles';
 
 const Table = ({ filterData }) => {
+  const momentFn = (time) => {
+    return moment(time).format('YYYY/MM/DD');
+  };
+
   return (
     <S.TableContainer>
       <thead>
@@ -18,7 +22,9 @@ const Table = ({ filterData }) => {
             <td>{item.user}</td>
             <td>{item.description}</td>
             <td>{`${
-              item.status !== 1 ? moment(item.time).format('YYYY/MM/DD') : 'Way is open'
+              item.status !== 1
+                ? momentFn(item.time)
+                : `Way is open, updated at ${momentFn(item.time)}`
             }`}</td>
           </tr>
         ))}
