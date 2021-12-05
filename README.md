@@ -40,7 +40,8 @@ You are done! Now you can start editing the React project in the new folder that
 
 Gedas Inčirauskas- [My portfolio](https://gjob.lt) - gedas.inc@gmail.com
 
-Project Link: [https://github.com/GedasIncirauskas/React-final-project-FE](Road accident system Front-End)
-Project Link: [https://github.com/GedasIncirauskas/React-final-project-BE](Road accident system Back-End)
+Project Link to front-end: [https://github.com/GedasIncirauskas/React-final-project-FE](https://github.com/GedasIncirauskas/React-final-project-FE)
+
+Project Link to back-end: [https://github.com/GedasIncirauskas/React-final-project-BE](https://github.com/GedasIncirauskas/React-final-project-BE)
 
 ##
