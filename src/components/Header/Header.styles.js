@@ -4,6 +4,7 @@ export const HeaderWrapper = styled.div`
   background-color: rgb(241, 241, 241);
   width: 100%;
   height: 5rem;
+  z-index: 999;
 
   @media screen and (max-width: 500px) {
     height: auto;

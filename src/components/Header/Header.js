@@ -32,7 +32,7 @@ const Header = () => {
               <Link to="/statistic" onClick={() => openBar(open)}>
                 Statistic
               </Link>
-              <Link to="/login" onClick={() => logOut()}>
+              <Link to="/" onClick={() => logOut()}>
                 Log out
               </Link>
             </>

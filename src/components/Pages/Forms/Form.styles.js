@@ -21,8 +21,8 @@ export const FormContainer = styled.div`
 
 export const InputStyle = styled.input`
   width: 100%;
-  padding: 1rem;
-  margin: 0.2rem 0 1.5rem 0;
+  padding: 0.5rem;
+  margin: 0.2rem 0 1rem 0;
   display: inline-block;
   border: none;
   background: #f1f1f1;
@@ -41,13 +41,14 @@ export const InputStyle = styled.input`
 
 export const ButtonWrapper = styled.div`
   text-align: center;
+  margin: 0;
 `;
 
 export const ButtonStyle = styled.button`
   background-color: #04aa6d;
   border-radius: 0.5rem;
   color: #fff;
-  padding: 0.8rem 1rem;
+  padding: 0.6rem 0.8rem;
   margin: 0.5rem 0;
   border: none;
   cursor: pointer;
